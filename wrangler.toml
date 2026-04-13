@@ -1,4 +1,5 @@
-name = "loreal-chatbot"
+# wrangler.toml
+name = '08-prj-loreal-chatbot'
 main = "RESOURCE_cloudflare-worker.js"
 compatibility_date = "2026-04-13"
 workers_dev = true
