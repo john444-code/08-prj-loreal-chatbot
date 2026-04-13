@@ -1,0 +1,8 @@
+name = "loreal-chatbot"
+main = "RESOURCE_cloudflare-worker.js"
+compatibility_date = "2026-04-13"
+workers_dev = true
+
+# Update account_id and workers_dev if you want to deploy to your Cloudflare account.
+# account_id = "eb609c082cacc70a2b326beacd1a1077"
+
