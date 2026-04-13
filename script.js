@@ -3,7 +3,10 @@ const userInput = document.getElementById("userInput");
 const chatWindow = document.getElementById("chatWindow");
 const latestQuestion = document.getElementById("latestQuestion");
 
-const WORKER_URL = window.WORKER_URL || "";
+const WORKER_URL =
+  (typeof WORKER_URL !== "undefined" ? WORKER_URL : null) ||
+  window.WORKER_URL ||
+  "";
 
 const systemPrompt = `You are a helpful L'Oréal product advisor. Only answer questions related to L’Oréal products, beauty routines, skincare, haircare, makeup, fragrances, and personalized recommendations. If a user asks about unrelated topics, politely explain that you can only help with L’Oréal beauty products and routines. Keep responses friendly, professional, and focused on L'Oréal.`;
 
