@@ -5,109 +5,183 @@
   padding: 0;
 }
 
-/* —— body + fonts —— */
+html,
+body {
+  min-height: 100%;
+}
+
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  color: #111;
+  background: linear-gradient(180deg, #f8f1e6 0%, #fff8f0 100%);
   display: flex;
   justify-content: center;
+  padding: 24px;
 }
 
 .page-wrapper {
-  width: 90%;
-  max-width: 900px;
+  width: min(100%, 920px);
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 }
 
-/* header */
 .site-header {
-  text-align: center;
-  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 30px 24px 16px;
+  background: #000000;
+  color: #ffffff;
+}
+
+.site-logo {
+  width: 64px;
+  height: auto;
+}
+
+.title-group {
+  text-align: left;
+}
+
+.brand-subtitle {
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #f1d18a;
+  margin-bottom: 6px;
 }
 
 .site-title {
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
 }
 
-/* chat window */
+main {
+  padding: 24px;
+}
+
 .chatbox {
-  margin: 40px 0;
+  display: grid;
+  gap: 18px;
+}
+
+.latest-question {
+  background: #f6ead5;
+  border-left: 4px solid #d6b66a;
+  padding: 14px 18px;
+  border-radius: 16px;
+  color: #2c1f12;
+  font-weight: 500;
 }
 
 .chat-window {
-  height: 360px;
-  border: 1px solid #000;
-  padding: 20px;
-  font-size: 18px;
-  line-height: 1.5;
+  min-height: 380px;
+  border-radius: 24px;
+  background: #faf7f3;
+  padding: 24px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
   overflow-y: auto;
-  background: #fafafa;
-  white-space: pre-line;
-}
-
-/* messages */
-.msg {
-  margin-bottom: 14px;
-  line-height: 1.5;
-}
-
-.msg.user {
-  color: #000;
-}
-
-.msg.ai {
-  color: #666666;
-}
-
-/* input row */
-.chat-form {
   display: flex;
-  gap: 12px;
-  margin-top: 16px;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.message {
+  max-width: 82%;
+  padding: 16px 18px;
+  border-radius: 24px;
+  line-height: 1.6;
+  word-break: break-word;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+}
+
+.message.user {
+  background: #000000;
+  color: #ffffff;
+  align-self: flex-end;
+  border-bottom-right-radius: 8px;
+}
+
+.message.assistant {
+  background: #f5ece0;
+  color: #1e1b17;
+  align-self: flex-start;
+  border-bottom-left-radius: 8px;
+}
+
+.message-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.message.user .message-label {
+  color: #d8caa5;
+}
+
+.message.assistant .message-label {
+  color: #7f6a4f;
+}
+
+.message-text {
+  white-space: pre-wrap;
+}
+
+.chat-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
 }
 
 .chat-form input {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #ccc;
-  font-size: 18px;
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid #ddd4c7;
+  font-size: 16px;
+  background: #fffaf4;
 }
 
 .chat-form input:focus {
-  outline: 2px solid #000;
+  outline: 2px solid #d6b66a;
   outline-offset: 2px;
 }
 
 .chat-form button {
-  font-size: 18px;
-  background: #000;
-  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   border: none;
-  padding: 12px;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #000000;
+  color: #ffffff;
   cursor: pointer;
-  transition: background 0.3s;
-}
-
-.chat-form button .material-icons {
-  font-size: 24px;
+  box-shadow: 0 14px 22px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .chat-form button:hover {
-  background: #666666;
+  transform: translateY(-1px);
+  background: #222222;
 }
 
 .chat-form button:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+  outline: 2px solid #d6b66a;
+  outline-offset: 3px;
 }
 
-/* visually hidden */
+.chat-form button .material-icons {
+  font-size: 28px;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -120,12 +194,13 @@ body {
   border: 0;
 }
 
-/* footer */
 .site-footer {
-  margin: 60px 0 40px;
+  padding: 24px;
   text-align: center;
-  font-size: 14px;
-  color: #666;
+  font-size: 13px;
+  color: #6a5b4a;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff8f0;
 }
 
 .site-footer nav {
@@ -133,11 +208,15 @@ body {
 }
 
 .site-footer a {
-  margin: 0 8px;
-  color: #000;
+  margin: 0 10px;
+  color: #000000;
   text-decoration: none;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: #7f6a4f;
+}
+
+.hidden {
+  display: none;
 }
