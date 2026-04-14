@@ -33,10 +33,14 @@ function addChatMessage(role, text) {
 
 function updateLatestQuestion(question) {
   if (!question) {
-    latestQuestion.classList.add("hidden");
+    latestQuestion.classList.add("visually-hidden");
     latestQuestion.textContent = "";
     return;
   }
+
+  latestQuestion.textContent = `Latest question: ${question}`;
+  latestQuestion.classList.remove("visually-hidden");
+}
 
   latestQuestion.textContent = `Latest question: ${question}`;
   latestQuestion.classList.remove("hidden");
