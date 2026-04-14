@@ -16,7 +16,8 @@ function createMessageElement(role, text) {
   labelEl.textContent = role === "user" ? "You" : "L'Oréal Advisor";
   const textEl = document.createElement("div");
   textEl.className = "message-text";
-  textEl.textContent = text;
+  // Convert **bold** markdown to <strong> tags
+  textEl.innerHTML = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
   messageEl.append(labelEl, textEl);
   return messageEl;
 }
