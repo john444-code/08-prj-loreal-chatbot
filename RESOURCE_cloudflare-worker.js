@@ -1,5 +1,3 @@
-// Copy this code into your Cloudflare Worker script
-
 export default {
   async fetch(request, env) {
     const corsHeaders = {
@@ -9,12 +7,11 @@ export default {
       "Content-Type": "application/json",
     };
 
-    // Handle CORS preflight requests
     if (request.method === "OPTIONS") {
       return new Response(null, { headers: corsHeaders });
     }
 
-    const apiKey = env.OPENAI_API_KEY; // Make sure to name your secret OPENAI_API_KEY in the Cloudflare Workers dashboard
+    const apiKey = env.OPENAI_API_KEY;
     const apiUrl = "https://api.openai.com/v1/chat/completions";
     const userInput = await request.json();
 
@@ -35,6 +32,14 @@ export default {
     });
 
     const data = await response.json();
+
+    // Return the full response including any errors from OpenAI
+    if (!response.ok) {
+      return new Response(JSON.stringify({ error: data }), { 
+        status: response.status, 
+        headers: corsHeaders 
+      });
+    }
 
     return new Response(JSON.stringify(data), { headers: corsHeaders });
   },
